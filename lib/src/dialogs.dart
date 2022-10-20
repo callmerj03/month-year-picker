@@ -351,6 +351,9 @@ class _MonthYearPickerDialogState extends State<MonthYearPickerDialog> {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               header,
+
+
+
                               Flexible(
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
