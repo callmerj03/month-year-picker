@@ -81,9 +81,22 @@ class _MyHomePageState extends State<MyHomePage> {
     final localeObj = locale != null ? Locale(locale) : null;
     final selected = await showMonthYearPicker(
       context: context,
+      builder: (BuildContext? context, Widget? child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            primaryColor:  Color(0xFFFAAA52),
+            accentColor:  Color(0xFFFAAA52),
+            colorScheme: ColorScheme.light(
+              primary:  Color(0xFFFAAA52),
+            ),
+            buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
+          ),
+          child: child!,
+        );
+      },
       initialDate: _selected ?? DateTime.now(),
-      firstDate: DateTime(2019),
-      lastDate: DateTime(2022),
+      firstDate: DateTime.now(),
+      lastDate: DateTime(2025),
       locale: localeObj,
     );
     // final selected = await showDatePicker(

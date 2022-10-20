@@ -316,58 +316,59 @@ class _MonthYearPickerDialogState extends State<MonthYearPickerDialog> {
     );
 
     final dialogSize = _dialogSize * textScaleFactor;
-    return Directionality(
-      textDirection: direction,
-      child: Dialog(
-        insetPadding: const EdgeInsets.symmetric(
-          horizontal: 16.0,
-          vertical: 24.0,
-        ),
-        clipBehavior: Clip.antiAlias,
-        child: AnimatedContainer(
-          width: dialogSize.width,
-          height: dialogSize.height,
-          duration: _dialogSizeAnimationDuration,
-          curve: Curves.easeIn,
-          child: MediaQuery(
-            data: MediaQuery.of(context).copyWith(
-              textScaleFactor: textScaleFactor,
-            ),
-            child: Builder(
-              builder: (context) {
-                switch (orientation) {
-                  case Orientation.portrait:
-                    return Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        header,
-                        switcher,
-                        Expanded(child: picker),
-                        actions,
-                      ],
-                    );
-                  case Orientation.landscape:
-                    return Row(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        header,
-                        Flexible(
-                          child: Column(
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Container(
+        child: Center(
+          child: Container(
+            color: Colors.white,
+            child: Directionality(
+              textDirection: direction,
+              child: AnimatedContainer(
+                duration: _dialogSizeAnimationDuration,
+                curve: Curves.easeIn,
+                child: MediaQuery(
+                  data: MediaQuery.of(context).copyWith(
+                    textScaleFactor: textScaleFactor,
+                  ),
+                  child: Builder(
+                    builder: (context) {
+                      switch (orientation) {
+                        case Orientation.portrait:
+                          return Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
+                              header,
                               switcher,
                               Expanded(child: picker),
                               actions,
                             ],
-                          ),
-                        ),
-                      ],
-                    );
-                }
-              },
+                          );
+                        case Orientation.landscape:
+                          return Row(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              header,
+                              Flexible(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                                  children: [
+                                    switcher,
+                                    Expanded(child: picker),
+                                    actions,
+                                  ],
+                                ),
+                              ),
+                            ],
+                          );
+                      }
+                    },
+                  ),
+                ),
+              ),
             ),
           ),
         ),

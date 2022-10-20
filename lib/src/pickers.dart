@@ -91,22 +91,26 @@ class MonthPickerState extends State<MonthPicker> {
   }
 
   Widget _buildItem(final BuildContext context, final int page) {
-    return GridView.count(
-      physics: const NeverScrollableScrollPhysics(),
-      padding: const EdgeInsets.all(8.0),
-      crossAxisCount: 4,
-      children: [
-        for (var i = 0; i < 12; i++)
-          _MonthButton(
-            page: page,
-            index: i,
-            firstDate: widget.firstDate,
-            lastDate: widget.lastDate,
-            selectedDate: widget.selectedDate,
-            onMonthSelected: widget.onMonthSelected,
-            selectableMonthYearPredicate: widget.selectableMonthYearPredicate,
-          ),
-      ],
+    return Container(
+      // Specify some width
+      width: MediaQuery.of(context).size.width * .7,
+      child: GridView.count(
+        padding: const EdgeInsets.all(8.0),
+        crossAxisCount: 4,
+        childAspectRatio: 4 / 4,
+        children: [
+          for (var i = 0; i < 12; i++)
+            _MonthButton(
+              page: page,
+              index: i,
+              firstDate: widget.firstDate,
+              lastDate: widget.lastDate,
+              selectedDate: widget.selectedDate,
+              onMonthSelected: widget.onMonthSelected,
+              selectableMonthYearPredicate: widget.selectableMonthYearPredicate,
+            ),
+        ],
+      ),
     );
   }
 
