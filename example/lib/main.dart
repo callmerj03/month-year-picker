@@ -52,10 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if (_selected == null)
-              const Text('No month year selected.')
-            else
-              Text(DateFormat().add_yM().format(_selected!)),
+            if (_selected == null) const Text('No month year selected.') else Text(DateFormat().add_yM().format(_selected!)),
             TextButton(
               child: const Text('DEFAULT LOCALE'),
               onPressed: () => _onPressed(context: context),
@@ -84,10 +81,10 @@ class _MyHomePageState extends State<MyHomePage> {
       builder: (BuildContext? context, Widget? child) {
         return Theme(
           data: ThemeData.light().copyWith(
-            primaryColor:  Color(0xFFFAAA52),
-            accentColor:  Color(0xFFFAAA52),
+            primaryColor: Color(0xFFFAAA52),
             colorScheme: ColorScheme.light(
-              primary:  Color(0xFFFAAA52),
+              primary: Color(0xFFFAAA52),
+              secondary: Color(0xFFFAAA52),
             ),
             buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
           ),
@@ -96,12 +93,13 @@ class _MyHomePageState extends State<MyHomePage> {
       },
       initialDate: _selected ?? DateTime.now(),
       firstDate: DateTime.now(),
-      lastDate: DateTime(2025),
+      lastDate: DateTime(2045),
       locale: localeObj,
     );
     // final selected = await showDatePicker(
     //   context: context,
-    //   initialDate: _selected ?? DateTime.now(),
+    //   initialD
+    //   ate: _selected ?? DateTime.now(),
     //   firstDate: DateTime(2019),
     //   lastDate: DateTime(2022),
     //   locale: localeObj,

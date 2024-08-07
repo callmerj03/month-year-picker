@@ -164,15 +164,13 @@ class YearPickerState extends State<YearPicker> {
 
   bool get canGoUp => _currentPage < (_pageCount - 1);
 
-  int get _pageCount =>
-      ((widget.lastDate.year - widget.firstDate.year + 1) / 12).ceil();
+  int get _pageCount => ((widget.lastDate.year - widget.firstDate.year + 1) / 12).ceil();
 
   // --------------------------------- METHODS ---------------------------------
   @override
   void initState() {
     super.initState();
-    _currentPage =
-        ((widget.initialDate.year - widget.firstDate.year) / 12).floor();
+    _currentPage = ((widget.initialDate.year - widget.firstDate.year) / 12).floor();
     _pageController = PageController(initialPage: _currentPage);
   }
 
@@ -270,8 +268,7 @@ class _MonthButton extends StatelessWidget {
     final isEnabled = selectableMonthYearPredicate == null
         ? firstDate.compareTo(date) <= 0 && lastDate.compareTo(date) >= 0
         : selectableMonthYearPredicate!(date);
-    final isSelected =
-        date.month == selectedDate.month && date.year == selectedDate.year;
+    final isSelected = date.month == selectedDate.month && date.year == selectedDate.year;
 
     final now = DateTime.now();
     final isThisMonth = date.month == now.month && date.year == now.year;
@@ -315,9 +312,8 @@ class _YearButton extends StatelessWidget {
     final date = DateTime(year);
     final locale = Localizations.localeOf(context).toString();
 
-    final isEnabled = selectableMonthYearPredicate == null
-        ? year >= firstDate.year && year <= lastDate.year
-        : selectableMonthYearPredicate!(date);
+    final isEnabled =
+        selectableMonthYearPredicate == null ? year >= firstDate.year && year <= lastDate.year : selectableMonthYearPredicate!(date);
     final isSelected = year == selectedDate.year;
 
     final now = DateTime.now();
@@ -366,14 +362,17 @@ class _Button extends StatelessWidget {
       onPressed: isEnabled ? onPressed : null,
       style: TextButton.styleFrom(
         backgroundColor: buttonBackground,
-        primary: buttonText,
-        onSurface: buttonText,
+        foregroundColor: buttonText,
+        disabledForegroundColor: buttonText,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(100.0),
         ),
         textStyle: TextStyle(color: buttonText),
       ),
-      child: Text(label),
+      child: Text(
+        label,
+        // style: TextStyle(color: Colors.black),
+      ),
     );
   }
 }
