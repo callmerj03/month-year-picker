@@ -92,8 +92,8 @@ class _MyHomePageState extends State<MyHomePage> {
         );
       },
       initialDate: _selected ?? DateTime.now(),
-      firstDate: DateTime.now(),
-      lastDate: DateTime(2045),
+      firstDate: DateTime(2022),
+      lastDate: DateTime.now(),
       locale: localeObj,
     );
     // final selected = await showDatePicker(

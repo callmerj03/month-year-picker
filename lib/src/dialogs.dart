@@ -202,7 +202,7 @@ class _MonthYearPickerDialogState extends State<MonthYearPickerDialog> {
               8.0,
               24.0,
             ),
-            backgroundColor: Theme.of(context).textTheme.titleMedium?.color,
+            // backgroundColor: Theme.of(context).textTheme.titleMedium?.color,
           ),
           child: Row(
             children: [
